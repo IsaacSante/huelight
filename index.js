@@ -1,16 +1,25 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
-const path = require('path');
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 let sceneId = 0; 
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
-  });
+//serve the client files 
+app.use(express.static('public'));
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
   
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
+  
+app.post('/scenes', function (req, res) {
+  //console.log(req.body.clientId);
+  let incomingId = req.body.clientId;
+  res.status(201).send('Post successful')
+  setLightScene(incomingId)
+})
 
 let testSetings = [
   {
@@ -32,4 +41,9 @@ let testSetings = [
       saturation:100,
   }
 ]
-console.log(testSetings[sceneId].hue)
+
+function setLightScene (incomingId) {
+  sceneId = incomingId
+  console.log(testSetings[sceneId].hue)
+  console.log(testSetings[sceneId].name + ' activated')
+}
