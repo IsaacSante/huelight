@@ -11,26 +11,22 @@ const v3 = require('node-hue-api').v3;
 const LightState = v3.lightStates.LightState;
 const USERNAME = "qawHUs23PIIvFXz8cylhyx4-hEeMHWrqqNi1ZELd" , LIGHT_ID = 1
 
-
-//serve the client files 
+//serve the client files & make the server
 app.use(express.static('public'));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
   
-//make the server
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
   
 //route for light scenes 
 app.post('/scenes', function (req, res) {
-  //console.log(req.body.clientId);
+  res.json({info:'Server says hello'})
   let incomingId = req.body.clientId;
-  res.status(201).send('Post successful')
   setLightScene(incomingId)
 })
 
-//video light settings 
 let testSetings = [
   {
       name: 'Serenity Beach', 
@@ -55,9 +51,10 @@ let testSetings = [
 //handle the new scene ID 
 function setLightScene (incomingId) {
   sceneId = incomingId
-  console.log(testSetings[sceneId].hue)
-  console.log(testSetings[sceneId].name + ' activated')
-
+  if(!incomingId){
+    sceneId = 0
+  }
+  console.log(testSetings[sceneId].name + ' ' + testSetings[sceneId].hue + ' activated')  
       //find the hue bridge and light
       v3.discovery.nupnpSearch()
       .then(searchResults => {
@@ -77,5 +74,4 @@ function setLightScene (incomingId) {
       .then(result => {
         console.log(`Light state change was successful? ${result}`);
       })
-
 }
