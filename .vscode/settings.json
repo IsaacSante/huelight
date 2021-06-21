@@ -1,0 +1,12 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "razor.format.enable": false,
+    "csharp.format.enable": false,
+    "glsl-canvas.useFormatter": false,
+    "glsl-canvas.useCompactFormatter": false,
+    "javascript.format.enable": false,
+    "json.format.enable": false,
+    "html.format.enable": false
+}

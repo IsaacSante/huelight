@@ -1,17 +1,18 @@
 {
   "name": "hue",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hue Api App",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
+  "author": "Isaac Sante",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "materialize-css": "^1.0.0-rc.2",
     "node-hue-api": "^5.0.0-beta.2",
     "nodemon": "^2.0.7"
   }

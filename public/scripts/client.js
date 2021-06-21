@@ -1,20 +1,37 @@
-console.log('Client is running')
 //client to server guide 
 //https://gist.github.com/aerrity/fd393e5511106420fba0c9602cc05d35
-  async function reply_click(clicked_id) {
-    try {
-        const url = 'http://localhost:8080/scenes'
-        const res = await fetch(url, {
-            method: 'POST',
-            headers: new Headers({ 'Accept': 'application/json','content-type': 'application/json'}),        
-            body: JSON.stringify({clientId: clicked_id})
-        })
-        console.log(res.ok)
-        // console.log(res.json)
-        const data = await res.json()
-        return data 
-    }catch(err){
-        console.error(err)
+console.log('Client is running')
+
+//make button for all scenes
+const sceneName = ["Menu", "Emerald Cove", "Sunrise peak", "Serenity Beach","Renewal Falls", "Summit Lake", "Sunrise Bay", "Redwood Forest", "Alpine Canopy", "Misty Lake", "Campfire Lake"]
+const url =  'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2040&q=80' 
+
+  for(i = 0; i < sceneName.length; i++){
+    let sceneImage = document.createElement("img")
+    sceneImage.innerHTML = sceneName[i]
+    sceneImage.src = url
+    //sceneImage.style.width = "200px";
+    sceneImage.style.height = "200px";
+    // append Id depending on order  
+    sceneImage.id = [i]
+    sceneImage.onclick = async function reply_click(){
+      try {
+              const url = 'http://localhost:8080/scenes'
+              const res = await fetch(url, {
+                  method: 'POST',
+                  headers: new Headers({ 'Accept': 'application/json','content-type': 'application/json'}),        
+                  body: JSON.stringify({clientId: this.id})
+              })
+              console.log(res.ok)
+              // console.log(res.json)
+              const data = await res.json()
+              return data 
+          }catch(err){
+              console.error(err)
+          }
     }
+    const parentContainer = document.getElementById("test-div")
+    parentContainer.appendChild(sceneImage)
   }
-  reply_click().then((data) => console.log(data.info))
+
+reply_click().then((data) => console.log(data.info))

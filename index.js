@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
   
+
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
   
@@ -29,23 +30,71 @@ app.post('/scenes', function (req, res) {
 
 let testSetings = [
   {
-      name: 'Serenity Beach', 
+      name: 'Menu', 
       hue: 1000,
       brightness: 100,
       saturation:100,
   },
   {
-      name: 'Misty Lake', 
+      name: 'Emerald Cove', 
       hue: 46920,
       brightness: 100,
       saturation:100,
   },
   {
-      name: 'Redwood Forest', 
+      name: 'Sunrise Peak', 
       hue: 25500,
       brightness: 100,
       saturation:100,
-  }
+  },
+    {
+      name: 'Serenity Beach', 
+      hue: 25500,
+      brightness: 100,
+      saturation:100,
+   },
+  {
+    name: 'Renewal Falls', 
+    hue: 25500,
+    brightness: 100,
+    saturation:100,
+  },
+  {
+      name: 'Summit Lake', 
+      hue: 25500,
+      brightness: 100,
+      saturation:100,
+  },
+  {
+    name: 'Sunrise Bay', 
+    hue: 25500,
+    brightness: 100,
+    saturation:100,
+ },
+ {
+  name: 'Redwood Forest', 
+  hue: 25500,
+  brightness: 100,
+  saturation:100,
+},
+{
+  name: 'Alpine Canopy', 
+  hue: 25500,
+  brightness: 100,
+  saturation:100,
+},
+{
+  name: 'Misty Lake', 
+  hue: 25500,
+  brightness: 100,
+  saturation:100,
+},
+{
+  name: 'Campfire Lake', 
+  hue: 25500,
+  brightness: 100,
+  saturation:100,
+},
 ]
 
 //handle the new scene ID 
