@@ -22,7 +22,7 @@ console.log('Server started at http://localhost:' + port);
   
 //route for light scenes 
 app.post('/scenes', function (req, res) {
-  res.json({info:'Server says hello'})
+  res.json({info:'Server has been activated'})
   let incomingId = req.body.clientId;
   setLightScene(incomingId)
 })
