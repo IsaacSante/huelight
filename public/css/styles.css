@@ -8,15 +8,12 @@ body{
 }
 
 #content{
-    padding: 2rem;
+    padding: 2rem; 
     width: 100%;
-    
-} 
-
-#test-div{
-    width: 50%;
-    display: flex; /* or inline-flex */
-    flex-grow: 4; /* default 0 */
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
+
+#test-div img{
+    height: 10rem;
+    margin: 1rem;
+}
+
